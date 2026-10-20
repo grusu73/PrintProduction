@@ -24,6 +24,8 @@ dotnet run --project PrintProduction.Playground/PrintProduction.Playground.cspro
 
 Both catalogs provide `Serialize()` and `Deserialize(string json)` methods for JSON round-tripping. The JSON preserves printer and media subtypes and writes enum values as strings. File storage remains the responsibility of the application layer.
 
+The Playground prints the serialized printer and media catalog JSON, then deserializes each catalog and reports the restored item and subtype counts.
+
 ## Calculations and validation
 
 `SheetMedia.GetAreaSquareMeters()` returns the area of one sheet. `RollMedia.CalculateCost(lengthM)` calculates media cost and rejects non-finite, non-positive lengths or lengths greater than the available roll. `ContinuousFeedPrinter.SupportsWebWidth(widthMm)` checks an inclusive supported-width range.

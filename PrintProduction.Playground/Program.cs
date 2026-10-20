@@ -43,7 +43,11 @@ var sheetPrinter = new SheetFedPrinter
 printerCatalog.Add(rollPrinter);
 printerCatalog.Add(sheetPrinter);
 
-var restoredPrinterCatalog = PrinterCatalog.Deserialize(printerCatalog.Serialize());
+var printerCatalogJson = printerCatalog.Serialize();
+Console.WriteLine("=== Serialized printer catalog JSON ===");
+Console.WriteLine(printerCatalogJson);
+
+var restoredPrinterCatalog = PrinterCatalog.Deserialize(printerCatalogJson);
 Console.WriteLine(
 	$"Printer JSON round-trip restored {restoredPrinterCatalog.GetAll().Count} printers, " +
 	$"including {restoredPrinterCatalog.GetByType(PrinterType.SheetFed).Count} sheet-fed and " +
@@ -133,7 +137,12 @@ mediaCatalog.Add(standardRoll);
 mediaCatalog.Add(coatedA4);
 mediaCatalog.Add(coatedA3);
 
-var restoredMediaCatalog = MediaCatalog.Deserialize(mediaCatalog.Serialize());
+var mediaCatalogJson = mediaCatalog.Serialize();
+Console.WriteLine();
+Console.WriteLine("=== Serialized media catalog JSON ===");
+Console.WriteLine(mediaCatalogJson);
+
+var restoredMediaCatalog = MediaCatalog.Deserialize(mediaCatalogJson);
 Console.WriteLine(
 	$"Media JSON round-trip restored {restoredMediaCatalog.GetAll().Count} media entries, " +
 	$"including {restoredMediaCatalog.GetAllSheets().Count} sheets and " +
